@@ -1,0 +1,41 @@
+[
+    {
+        "id": "12304050",
+        "status": {
+            "message": "On way",
+            "pickedUp": true,
+            "courier": {
+                "name": "R Hellgren",
+                "id": "19393030"
+            },
+            "delivered": false,
+        },
+        "sender": "Knarkkungen.se",
+        "location": "Donken kungsgatan"
+    },
+    {
+        "id": "32423434",
+        "status": {
+            "message": "On way",
+            "pickedUp": false,
+            "courier": {
+                "name": "R Hellgren",
+                "id": "19393030"
+            },
+            "delivered": false
+        },
+        "sender": "Knarkkungen.se",
+        "location": "Donken sveavägen"
+    },
+    {
+        "id": "8923492339",
+        "status": {
+            "message": "On way",
+            "pickedUp": false,
+            "courier": null,
+            "delivered": false,
+        },
+        "sender": "Knarkkungen.se",
+        "location": "Donken kungsgatan"
+    }
+]
