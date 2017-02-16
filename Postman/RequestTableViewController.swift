@@ -9,6 +9,8 @@
 import UIKit
 
 class RequestTableViewController: UITableViewController {
+    
+    var parcel: Parcel? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,14 +84,13 @@ class RequestTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
+        let contactController = segue.destination as! ContactsUiViewController
+        contactController.parcel = parcel
         // Pass the selected object to the new view controller.
     }
-    */
 
 }

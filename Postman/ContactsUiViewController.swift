@@ -18,6 +18,7 @@ class ContactsUiViewController: UIViewController {
     
     var store = CNContactStore()
     var contacts: [CNContact] = []
+    var parcel : Parcel? = nil
     
     @IBAction func textFieldValueChanged(sender: AnyObject) {
         if let query = textField.text {

@@ -111,5 +111,12 @@ class ParcelDetailTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let requestController = segue.destination as! RequestTableViewController
+        
+        requestController.parcel = parcel
+    }
 
 }
