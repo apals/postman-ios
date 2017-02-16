@@ -15,6 +15,7 @@
 		458F8E121E55C777006C95E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458F8E101E55C777006C95E7 /* LaunchScreen.storyboard */; };
 		458F8E1D1E55C777006C95E7 /* PostmanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458F8E1C1E55C777006C95E7 /* PostmanTests.swift */; };
 		458F8E281E55C777006C95E7 /* PostmanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458F8E271E55C777006C95E7 /* PostmanUITests.swift */; };
+		458F8E361E55CFAA006C95E7 /* PostmanApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458F8E351E55CFAA006C95E7 /* PostmanApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		458F8E231E55C777006C95E7 /* PostmanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PostmanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		458F8E271E55C777006C95E7 /* PostmanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostmanUITests.swift; sourceTree = "<group>"; };
 		458F8E291E55C777006C95E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		458F8E351E55CFAA006C95E7 /* PostmanApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostmanApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				458F8E0E1E55C777006C95E7 /* Assets.xcassets */,
 				458F8E101E55C777006C95E7 /* LaunchScreen.storyboard */,
 				458F8E131E55C777006C95E7 /* Info.plist */,
+				458F8E351E55CFAA006C95E7 /* PostmanApi.swift */,
 			);
 			path = Postman;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				458F8E0A1E55C776006C95E7 /* SecondViewController.swift in Sources */,
 				458F8E061E55C776006C95E7 /* AppDelegate.swift in Sources */,
 				458F8E081E55C776006C95E7 /* FirstViewController.swift in Sources */,
+				458F8E361E55CFAA006C95E7 /* PostmanApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

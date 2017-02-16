@@ -9,17 +9,26 @@
 import UIKit
 
 class FirstViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        postmanApi.getParcels(completionHandler: success)
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
+    
+    func success(err: Error?, parcels: [Parcel]?, response: URLResponse?) -> Void {
+        
+        print(parcels)
+         
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
