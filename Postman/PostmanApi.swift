@@ -49,7 +49,7 @@ extension Status {
 }
 
 public struct Parcel {
-    public let id: Int
+    public let id: String
     public let status: Status
     public let sender: String
     public let location: String
@@ -57,7 +57,7 @@ public struct Parcel {
 
 extension Parcel {
     init?(json: [String:Any]) {
-        let id = json["id"] as! Int
+        let id = json["id"] as! String
         let status = Status(json: json["status"] as! [String:Any])
         let sender = json["sender"] as! String
         let location = json["location"] as! String
