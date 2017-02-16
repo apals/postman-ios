@@ -104,6 +104,33 @@ open class PostmanApi {
         return Parcel(json: parcelJson)
     }
     
+    
+    func login(email: String, password: String, completionHandler:@escaping (Bool) -> ()) {
+        
+        let request = URLRequest(url: URL(string: "http://postman.quemar.mx/me?email=\(email)&password=\(password)")!)
+        let session = URLSession.shared
+        
+        session.dataTask(with: request) {data, response, err in
+            
+            if err != nil {
+                completionHandler(false)
+                return
+            }
+            
+            print(response)
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    completionHandler(true)
+                } else {
+                    completionHandler(false)
+                }
+            }
+            
+            }.resume()
+        
+    }
+    
+    
 }
 
 
