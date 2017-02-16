@@ -17,6 +17,7 @@
 		458F8E281E55C777006C95E7 /* PostmanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458F8E271E55C777006C95E7 /* PostmanUITests.swift */; };
 		458F8E361E55CFAA006C95E7 /* PostmanApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458F8E351E55CFAA006C95E7 /* PostmanApi.swift */; };
 		458F8E381E55FAF8006C95E7 /* ParcelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458F8E371E55FAF8006C95E7 /* ParcelTableViewCell.swift */; };
+		765FCA541E5601D200E30811 /* ParcelDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765FCA531E5601D200E30811 /* ParcelDetailTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		458F8E291E55C777006C95E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		458F8E351E55CFAA006C95E7 /* PostmanApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostmanApi.swift; sourceTree = "<group>"; };
 		458F8E371E55FAF8006C95E7 /* ParcelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParcelTableViewCell.swift; sourceTree = "<group>"; };
+		765FCA531E5601D200E30811 /* ParcelDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParcelDetailTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				458F8E131E55C777006C95E7 /* Info.plist */,
 				458F8E351E55CFAA006C95E7 /* PostmanApi.swift */,
 				458F8E371E55FAF8006C95E7 /* ParcelTableViewCell.swift */,
+				765FCA531E5601D200E30811 /* ParcelDetailTableViewController.swift */,
 			);
 			path = Postman;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				458F8E0A1E55C776006C95E7 /* SecondViewController.swift in Sources */,
+				765FCA541E5601D200E30811 /* ParcelDetailTableViewController.swift in Sources */,
 				458F8E061E55C776006C95E7 /* AppDelegate.swift in Sources */,
 				458F8E381E55FAF8006C95E7 /* ParcelTableViewCell.swift in Sources */,
 				458F8E081E55C776006C95E7 /* FirstViewController.swift in Sources */,
@@ -517,6 +521,7 @@
 				458F8E2E1E55C777006C95E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		458F8E2F1E55C777006C95E7 /* Build configuration list for PBXNativeTarget "PostmanTests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +530,7 @@
 				458F8E311E55C777006C95E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		458F8E321E55C777006C95E7 /* Build configuration list for PBXNativeTarget "PostmanUITests" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +539,7 @@
 				458F8E341E55C777006C95E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
