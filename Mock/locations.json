@@ -1,0 +1,26 @@
+[
+	{
+		"id": "12345",
+		"name": "Ica Nära",
+		"coordinates": {
+			"long": 59.350924,
+			"lat": 18.003663
+		}
+	},
+	{
+		"id": "12345",
+		"name": "Malins Kiosk",
+		"coordinates": {
+			"long": 59.356019,
+			"lat": 17.999193
+		}
+	},
+	{
+		"id": "12345",
+		"name": "Hemköp",
+		"coordinates": {
+			"long": 59.349659,
+			"lat": 17.986914
+		}
+	}
+]
