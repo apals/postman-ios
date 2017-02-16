@@ -10,21 +10,23 @@ import Foundation
 
 import MapKit
 
-public struct Location {
+class Location: NSObject, MKAnnotation {
     public let id: String
     public let title: String?
-    public let long: Float
-    public let lat: Float
+    public let coordinate: CLLocationCoordinate2D
     
     init?(json: [String:Any]) {
         let id = json["id"] as! String
         let name = json["name"] as! String
-        let long = (json["coordinates"] as! [String:Any])["long"] as! Float
-        let lat = (json["coordinates"] as! [String:Any])["lat"] as! Float
+        let coordinates = Coordinates(json: json["coordinates"] as! [String:Any])
         
         self.id = id
         self.title = name
-        self.long = long
-        self.lat = lat
+        self.coordinate = CLLocationCoordinate2D(
+            latitude: CLLocationDegrees((coordinates?.long)!),
+            longitude: CLLocationDegrees((coordinates?.lat)!))
+        
+        super.init()
     }
+    
 }

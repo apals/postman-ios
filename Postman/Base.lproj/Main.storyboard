@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Second-->
+        <!--Service Points-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Postman" customModuleProvider="target" sceneMemberID="viewController">
@@ -34,14 +34,43 @@
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="asd-QI-uhu" secondAttribute="bottom" constant="8" symbolic="YES" id="ke4-1A-T09"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <navigationItem key="navigationItem" title="Service Points" id="P3u-hR-EyG"/>
                     <connections>
                         <outlet property="postOfficesMapView" destination="asd-QI-uhu" id="8bd-4E-K0u"/>
+                        <segue destination="sR7-zh-mmO" kind="show" identifier="ShowParcelsAtServicePoint" id="sW5-87-H8y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.60000000000002" y="359.37031484257875"/>
+            <point key="canvasLocation" x="1688.8" y="359.37031484257875"/>
+        </scene>
+        <!--Service Point Packages Table View Controller-->
+        <scene sceneID="Ft0-9J-1Wq">
+            <objects>
+                <tableViewController id="sR7-zh-mmO" customClass="ServicePointPackagesTableViewController" customModule="Postman" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7hX-eX-Kul">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0eO-Bz-Bw7">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0eO-Bz-Bw7" id="WrW-wb-nql">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="sR7-zh-mmO" id="unD-FX-YtA"/>
+                            <outlet property="delegate" destination="sR7-zh-mmO" id="T20-hh-aD1"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HhW-Zw-kJN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2807.1999999999998" y="581.55922038980509"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="0mJ-w0-A6X">
@@ -135,7 +164,7 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="pJZ-ky-hpb" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="fMu-QL-Mod" kind="relationship" relationship="viewControllers" id="t1W-Va-fRR"/>
                     </connections>
                 </tabBarController>
@@ -287,6 +316,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I90-Zq-O2i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-365.66716641679164"/>
+        </scene>
+        <!--Second-->
+        <scene sceneID="0YG-er-waQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pJZ-ky-hpb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vg6-5T-W8T">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="rAx-2Z-afA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i9U-TE-nOl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="749.60000000000002" y="359.37031484257875"/>
         </scene>
     </scenes>
     <resources>
