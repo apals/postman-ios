@@ -23,6 +23,7 @@
 		765FCA541E5601D200E30811 /* ParcelDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765FCA531E5601D200E30811 /* ParcelDetailTableViewController.swift */; };
 		765FCA561E5636CF00E30811 /* ContactsUiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765FCA551E5636CF00E30811 /* ContactsUiViewController.swift */; };
 		765FCA581E5638AB00E30811 /* RequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765FCA571E5638AB00E30811 /* RequestTableViewController.swift */; };
+		765FCA5A1E564E6200E30811 /* AskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765FCA591E564E6200E30811 /* AskTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		765FCA531E5601D200E30811 /* ParcelDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParcelDetailTableViewController.swift; sourceTree = "<group>"; };
 		765FCA551E5636CF00E30811 /* ContactsUiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsUiViewController.swift; sourceTree = "<group>"; };
 		765FCA571E5638AB00E30811 /* RequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTableViewController.swift; sourceTree = "<group>"; };
+		765FCA591E564E6200E30811 /* AskTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AskTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				451D7C3C1E564A4B00F212FC /* Location.swift */,
 				451D7C3E1E564A9500F212FC /* ServicePointPackagesTableViewController.swift */,
 				451D7C401E564ADE00F212FC /* RequestTableViewCell.swift */,
+				765FCA591E564E6200E30811 /* AskTableViewController.swift */,
 			);
 			path = Postman;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				458F8E0A1E55C776006C95E7 /* SecondViewController.swift in Sources */,
+				765FCA5A1E564E6200E30811 /* AskTableViewController.swift in Sources */,
 				765FCA541E5601D200E30811 /* ParcelDetailTableViewController.swift in Sources */,
 				458F8E061E55C776006C95E7 /* AppDelegate.swift in Sources */,
 				765FCA561E5636CF00E30811 /* ContactsUiViewController.swift in Sources */,

@@ -57,6 +57,19 @@ class ContactsUiViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let askTableViewController = segue.destination as! AskTableViewController
+        
+        // Get the cell that generated this segue.
+        if let selectedContactCell = sender as? UITableViewCell {
+            let indexPath = tableView.indexPath(for: selectedContactCell)!
+            let selectedContact = contacts[indexPath.row]
+            askTableViewController.name = selectedContact.givenName + " " + selectedContact.familyName
+            askTableViewController.phone = (selectedContact.phoneNumbers[0].value ).value(forKey: "digits") as? String
+        }
+    }
 
 }
 
@@ -75,13 +88,13 @@ extension ContactsUiViewController: UITableViewDataSource {
     }
 }
 
-extension ContactsUiViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = CNContactViewController(for: contacts[indexPath.row])
-        controller.contactStore = self.store
-        controller.allowsEditing = false
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
-    
-}
+//extension ContactsUiViewController: UITableViewDelegate {
+//    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let controller = CNContactViewController(for: contacts[indexPath.row])
+//        controller.contactStore = self.store
+//        controller.allowsEditing = false
+//        self.navigationController?.pushViewController(controller, animated: true)
+//    }
+//    
+//}
