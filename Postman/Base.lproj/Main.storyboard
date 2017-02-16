@@ -53,13 +53,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0eO-Bz-Bw7">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RequestTableViewCell" id="0eO-Bz-Bw7" customClass="RequestTableViewCell" customModule="Postman" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0eO-Bz-Bw7" id="WrW-wb-nql">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F98-VL-M4w">
+                                            <rect key="frame" x="8" y="11" width="359" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="F98-VL-M4w" firstAttribute="centerY" secondItem="WrW-wb-nql" secondAttribute="centerY" id="j8s-bK-dnA"/>
+                                        <constraint firstItem="F98-VL-M4w" firstAttribute="trailing" secondItem="WrW-wb-nql" secondAttribute="trailingMargin" id="oOX-MF-hq2"/>
+                                        <constraint firstItem="F98-VL-M4w" firstAttribute="leading" secondItem="WrW-wb-nql" secondAttribute="leadingMargin" id="ot2-IF-Msa"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="requestLabel" destination="F98-VL-M4w" id="2sh-GL-eDQ"/>
+                                    <segue destination="3Is-D0-gkl" kind="show" id="YYB-Zf-aBz"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -70,7 +87,50 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HhW-Zw-kJN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2807.1999999999998" y="581.55922038980509"/>
+            <point key="canvasLocation" x="2807.1999999999998" y="580.65967016491754"/>
+        </scene>
+        <!--Request Detail Table View Controller-->
+        <scene sceneID="VOE-O2-RcG">
+            <objects>
+                <tableViewController id="3Is-D0-gkl" customClass="RequestDetailTableViewController" customModule="Postman" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="wkG-5d-Idu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="o6b-tG-v1r">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="QTo-cR-3FC">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QTo-cR-3FC" id="Wh9-1y-IFb">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Co8-LS-ozQ">
+                                                    <rect key="frame" x="75" y="6" width="224" height="30"/>
+                                                    <state key="normal" title="HÄMTA PAKET"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Co8-LS-ozQ" firstAttribute="centerY" secondItem="Wh9-1y-IFb" secondAttribute="centerY" id="8y8-98-Lt6"/>
+                                                <constraint firstItem="Co8-LS-ozQ" firstAttribute="centerX" secondItem="Wh9-1y-IFb" secondAttribute="centerX" id="laJ-cg-C9K"/>
+                                                <constraint firstItem="Co8-LS-ozQ" firstAttribute="leading" secondItem="Wh9-1y-IFb" secondAttribute="leadingMargin" constant="67" id="xcJ-Dv-HCl"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="3Is-D0-gkl" id="PT2-Fa-PTi"/>
+                            <outlet property="delegate" destination="3Is-D0-gkl" id="uqA-KA-SSn"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="az4-xR-bG8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3900" y="448.42578710644682"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="0mJ-w0-A6X">

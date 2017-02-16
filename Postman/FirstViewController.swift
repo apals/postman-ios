@@ -22,7 +22,6 @@ class FirstViewController: UITableViewController {
     
     
     func success(err: Error?, parcels: [Parcel]?, response: URLResponse?) -> Void {
-        print(parcels)
         self.parcels += parcels!
         tableView.reloadData()
     }

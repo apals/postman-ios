@@ -39,8 +39,6 @@ class LoginViewController: UIViewController {
             
             if success {
                 self.performSegue(withIdentifier: "Launch", sender:self)
-                
-                
             } else {
                 print("noooo")
                 self.errorLabel.text = "Login failed. Please check your username and password"

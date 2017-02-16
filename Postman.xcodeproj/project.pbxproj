@@ -20,6 +20,8 @@
 		458F8E3A1E5609D1006C95E7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458F8E391E5609D1006C95E7 /* LoginViewController.swift */; };
 		45AEC4731E561A6000397003 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AEC4721E561A6000397003 /* Location.swift */; };
 		45AEC4771E56371400397003 /* ServicePointPackagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AEC4761E56371400397003 /* ServicePointPackagesTableViewController.swift */; };
+		45AEC4791E563D1100397003 /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AEC4781E563D1100397003 /* RequestTableViewCell.swift */; };
+		45AEC47B1E5647C600397003 /* RequestDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AEC47A1E5647C600397003 /* RequestDetailTableViewController.swift */; };
 		765FCA541E5601D200E30811 /* ParcelDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765FCA531E5601D200E30811 /* ParcelDetailTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +62,8 @@
 		458F8E391E5609D1006C95E7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		45AEC4721E561A6000397003 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		45AEC4761E56371400397003 /* ServicePointPackagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicePointPackagesTableViewController.swift; sourceTree = "<group>"; };
+		45AEC4781E563D1100397003 /* RequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
+		45AEC47A1E5647C600397003 /* RequestDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDetailTableViewController.swift; sourceTree = "<group>"; };
 		765FCA531E5601D200E30811 /* ParcelDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParcelDetailTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,6 +128,8 @@
 				458F8E391E5609D1006C95E7 /* LoginViewController.swift */,
 				45AEC4721E561A6000397003 /* Location.swift */,
 				45AEC4761E56371400397003 /* ServicePointPackagesTableViewController.swift */,
+				45AEC4781E563D1100397003 /* RequestTableViewCell.swift */,
+				45AEC47A1E5647C600397003 /* RequestDetailTableViewController.swift */,
 			);
 			path = Postman;
 			sourceTree = "<group>";
@@ -281,6 +287,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				458F8E3A1E5609D1006C95E7 /* LoginViewController.swift in Sources */,
+				45AEC4791E563D1100397003 /* RequestTableViewCell.swift in Sources */,
+				45AEC47B1E5647C600397003 /* RequestDetailTableViewController.swift in Sources */,
 				458F8E0A1E55C776006C95E7 /* SecondViewController.swift in Sources */,
 				45AEC4731E561A6000397003 /* Location.swift in Sources */,
 				765FCA541E5601D200E30811 /* ParcelDetailTableViewController.swift in Sources */,

@@ -11,20 +11,23 @@ import Foundation
 import MapKit
 
 class Location: NSObject, MKAnnotation {
-    public let id: String
+    public let id: Int
     public let title: String?
     public let coordinate: CLLocationCoordinate2D
+    public let distance: Float
     
     init?(json: [String:Any]) {
-        let id = json["id"] as! String
+        let id = json["id"] as! Int
         let name = json["name"] as! String
-        let coordinates = Coordinates(json: json["coordinates"] as! [String:Any])
+        let distance = json["distance"] as! Float
         
         self.id = id
         self.title = name
         self.coordinate = CLLocationCoordinate2D(
-            latitude: CLLocationDegrees((coordinates?.long)!),
-            longitude: CLLocationDegrees((coordinates?.lat)!))
+            latitude: CLLocationDegrees(Float(json["longitude"] as! String)!),
+            longitude: CLLocationDegrees(Float(json["latitude"] as! String)!))
+                
+        self.distance = distance
         
         super.init()
     }

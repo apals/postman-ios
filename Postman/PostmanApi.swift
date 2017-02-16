@@ -10,13 +10,13 @@ import Foundation
 
 public struct Courier {
     public let name: String
-    public let id: String
+    public let id: Int
 }
 
 extension Courier {
     init?(json: [String:Any]) {
         let name = json["name"] as! String
-        let id = json["id"] as! String
+        let id = json["id"] as! Int
         
         self.name = name
         self.id = id
@@ -49,7 +49,7 @@ extension Status {
 }
 
 public struct Parcel {
-    public let id: String
+    public let id: Int
     public let status: Status
     public let sender: String
     public let location: String
@@ -57,7 +57,7 @@ public struct Parcel {
 
 extension Parcel {
     init?(json: [String:Any]) {
-        let id = json["id"] as! String
+        let id = json["id"] as! Int
         let status = Status(json: json["status"] as! [String:Any])
         let sender = json["sender"] as! String
         let location = json["location"] as! String
@@ -76,8 +76,8 @@ public struct Coordinates {
 
 extension Coordinates {
     init?(json: [String:Any]) {
-        let long = json["long"] as! Float
-        let lat = json["lat"] as! Float
+        let long = json["longitude"] as! Float
+        let lat = json["latitude"] as! Float
         
         self.long = long
         self.lat = lat
@@ -132,7 +132,6 @@ open class PostmanApi {
                 return
             }
             
-            print(response)
             if let httpResponse = response as? HTTPURLResponse {
                 if httpResponse.statusCode == 200 {
                     completionHandler(true)
@@ -146,7 +145,7 @@ open class PostmanApi {
     }
     
     func getLocations(completionHandler:@escaping (Error?, [Location]?, URLResponse?) -> ()) {
-        let request = URLRequest(url: URL(string: "http://localhost:8000/locations.json")!)
+        let request = URLRequest(url: URL(string: "http://postman.quemar.mx/service_points?email=a@a.se&password=a&longitude=59.332484&latitude=18.061296")!)
         let session = URLSession.shared
         
         session.dataTask(with: request) {data, response, err in
@@ -179,6 +178,55 @@ open class PostmanApi {
     }
     
     
+    
+    func getRequestsAtServicePoint(id: Int, completionHandler:@escaping (Error?, [Request]?, URLResponse?) -> ()) {
+        let request = URLRequest(url: URL(string: "http://postman.quemar.mx/requests?email=a@a.se&password=a&service_point_id=\(id)")!)
+        let session = URLSession.shared
+        
+        session.dataTask(with: request) {data, response, err in
+            
+            if let err = err {
+                completionHandler(err, nil, nil)
+                return
+            }
+            
+            do {
+                
+                let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as! [[String: Any]]
+                var requests: [Request] = []
+                
+                for requestJson in parsedData {
+                    let r: Request = Request(json: requestJson)!
+                    requests.append(r)
+                }
+                
+                completionHandler(nil, requests, response)
+                
+            } catch let error as NSError {
+                print(error)
+            }
+            }.resume()
+    }
+    
+}
+
+public struct Request {
+    public let servicePoint: String
+    public let parcelWeight: Int
+    public let parcelSize: String
+    public let price: Int
+    public let address: String
+    public let accepted: Bool
+    
+    init?(json: [String:Any]) {
+        
+        self.servicePoint = json["service_point"] as! String
+        self.parcelWeight = json["parcel_weight"] as! Int
+        self.parcelSize = json["parcel_size"] as! String
+        self.price = json["price"] as! Int
+        self.address = json["address"] as! String
+        self.accepted = json["accepted"] as! Bool
+    }
 }
 
 
