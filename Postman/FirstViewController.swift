@@ -54,6 +54,14 @@ class FirstViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        let parcelDetailViewController = segue.destination as! ParcelDetailTableViewController
+        
+        // Get the cell that generated this segue.
+        if let selectedParselCell = sender as? ParcelTableViewCell {
+            let indexPath = tableView.indexPath(for: selectedParselCell)!
+            let selectedParsel = parcels[indexPath.row]
+            parcelDetailViewController.parcel = selectedParsel
+        }
     }
 }
 
