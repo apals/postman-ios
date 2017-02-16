@@ -28,7 +28,7 @@ class LoginViewController: UIViewController {
     }
     
     
-    @IBAction func onLoginClick(_ sender: Any) {
+    @IBAction func onLoginButtonClick(_ sender: Any) {
         spinner.startAnimating()
         postmanApi.login(email: usernameTextField.text ?? "", password: passwordTextField.text ?? "", completionHandler: success)
     }
