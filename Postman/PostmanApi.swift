@@ -9,29 +9,70 @@
 import Foundation
 
 public struct Courier {
-    public var name: String?
-    public var id: String?
+    public let name: String
+    public let id: String
+}
+
+extension Courier {
+    init?(json: [String:Any]) {
+        let name = json["name"] as! String
+        let id = json["id"] as! String
+        
+        self.name = name
+        self.id = id
+    }
 }
 
 public struct Status {
-    public var message: String?
-    public var pickedUp: Bool?
-    public var courier: Courier?
+    public let message: String
+    public let pickedUp: Bool
+    public let courier: Courier?
+    public let delivered: Bool
+}
+
+extension Status {
+    init?(json: [String:Any]) {
+        let message = json["message"] as! String
+        let pickedUp = json["pickedUp"] as! Bool
+        let delivered = json["delivered"] as! Bool
+        let courierJson = json["courier"]
+        if courierJson is NSNull  {
+            self.courier = nil
+        } else {
+            self.courier = Courier(json: courierJson as! [String:Any])
+        }
+        
+        self.delivered = delivered
+        self.message = message
+        self.pickedUp = pickedUp
+    }
 }
 
 public struct Parcel {
-    public var id: String?
-    public var status: Status?
-    public var sender: String?
-    public var location: String?
-    public var delivered: Bool?
+    public let id: String
+    public let status: Status
+    public let sender: String
+    public let location: String
 }
 
+extension Parcel {
+    init?(json: [String:Any]) {
+        let id = json["id"] as! String
+        let status = Status(json: json["status"] as! [String:Any])
+        let sender = json["sender"] as! String
+        let location = json["location"] as! String
+        
+        self.id = id
+        self.status = status!
+        self.sender = sender
+        self.location = location
+    }
+}
 
 open class PostmanApi {
     
     func getParcels(completionHandler:@escaping (Error?, [Parcel]?, URLResponse?) -> ()) {
-        let request = URLRequest(url: URL(string: "https://medconf.apals.se/api/events")!)
+        let request = URLRequest(url: URL(string: "http://localhost:8000/parcels.json")!)
         let session = URLSession.shared
         
         session.dataTask(with: request) {data, response, err in
@@ -47,7 +88,7 @@ open class PostmanApi {
                 var parcels: [Parcel] = []
                 
                 for parcelJson in parsedData {
-                    let p: Parcel = self.createParcelFromJson(parcelJson)
+                    let p: Parcel = self.createParcelFromJson(parcelJson)!
                     parcels.append(p)
                 }
                 
@@ -59,30 +100,8 @@ open class PostmanApi {
             }.resume()
     }
     
-    func createParcelFromJson(_ parcelJson: [String: Any]) -> Parcel {
-        var p: Parcel = Parcel()
-        
-        p.id = parcelJson["id"] as? String
-        p.status = self.createStatusFromJson(parcelJson["status"])
-        p.sender = parcelJson["sender"] as? String
-        p.location = parcelJson["location"] as? String
-        p.delivered = parcelJson["delivered"] as? Bool
-        
-        return p
-    }
-    
-    func createStatusFromJson(_ json: Any?) -> Status{
-        let jsonDict = json as! [String: Any]
-        var s: Status = Status()
-        s.message = jsonDict["message"] as? String
-        s.pickedUp =  jsonDict["pickedUp"] as? Bool
-        s.courier = self.createCourierFromJson(jsonDict["courier"])
-        return s
-    }
-    
-    func createCourierFromJson(_ json: Any?) -> Courier {
-        var c: Courier = Courier()
-        return c
+    func createParcelFromJson(_ parcelJson: [String: Any]) -> Parcel? {
+        return Parcel(json: parcelJson)
     }
     
 }
