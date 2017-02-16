@@ -16,6 +16,8 @@
 		458F8E1D1E55C777006C95E7 /* PostmanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458F8E1C1E55C777006C95E7 /* PostmanTests.swift */; };
 		458F8E281E55C777006C95E7 /* PostmanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458F8E271E55C777006C95E7 /* PostmanUITests.swift */; };
 		458F8E361E55CFAA006C95E7 /* PostmanApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458F8E351E55CFAA006C95E7 /* PostmanApi.swift */; };
+		73C585631E560B3F0040C826 /* VCMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C585621E560B3F0040C826 /* VCMapView.swift */; };
+		73C585651E560C560040C826 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C585641E560C560040C826 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		458F8E271E55C777006C95E7 /* PostmanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostmanUITests.swift; sourceTree = "<group>"; };
 		458F8E291E55C777006C95E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		458F8E351E55CFAA006C95E7 /* PostmanApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostmanApi.swift; sourceTree = "<group>"; };
+		73C585621E560B3F0040C826 /* VCMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCMapView.swift; sourceTree = "<group>"; };
+		73C585641E560C560040C826 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,8 @@
 		458F8DF91E55C776006C95E7 = {
 			isa = PBXGroup;
 			children = (
+				73C585641E560C560040C826 /* Location.swift */,
+				73C585621E560B3F0040C826 /* VCMapView.swift */,
 				458F8E041E55C776006C95E7 /* Postman */,
 				458F8E1B1E55C777006C95E7 /* PostmanTests */,
 				458F8E261E55C777006C95E7 /* PostmanUITests */,
@@ -267,7 +273,9 @@
 			files = (
 				458F8E0A1E55C776006C95E7 /* SecondViewController.swift in Sources */,
 				458F8E061E55C776006C95E7 /* AppDelegate.swift in Sources */,
+				73C585631E560B3F0040C826 /* VCMapView.swift in Sources */,
 				458F8E081E55C776006C95E7 /* FirstViewController.swift in Sources */,
+				73C585651E560C560040C826 /* Location.swift in Sources */,
 				458F8E361E55CFAA006C95E7 /* PostmanApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -513,6 +521,7 @@
 				458F8E2E1E55C777006C95E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		458F8E2F1E55C777006C95E7 /* Build configuration list for PBXNativeTarget "PostmanTests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +530,7 @@
 				458F8E311E55C777006C95E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		458F8E321E55C777006C95E7 /* Build configuration list for PBXNativeTarget "PostmanUITests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +539,7 @@
 				458F8E341E55C777006C95E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,12 +7,28 @@
 //
 
 import UIKit
+import MapKit
 
 class SecondViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        //let initialLocation = CLLocation(latitude: 59.3501, longitude: 18.0094)
+        let initialLocation = CLLocation(latitude: 59.350924, longitude: 18.003663)
+        centerMapOnLocation(location: initialLocation)
+        
+        postOfficesMapView.delegate = self
+        
+        postmanApi.getLocations(completionHandler: success)
+    }
+    
+    func success(err: Error?, locations: [Location]?, response: URLResponse?) -> Void {
+        for place in locations! {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D
+            postOfficesMapView.addAnnotation(place)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +36,14 @@ class SecondViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBOutlet var postOfficesMapView: MKMapView!
+    
+    let regionRadius: CLLocationDistance = 500
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+                                                                  regionRadius * 2.0, regionRadius * 2.0)
+        postOfficesMapView.setRegion(coordinateRegion, animated: true)
+    }
 
 }
 
