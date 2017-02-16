@@ -6,13 +6,21 @@
 //  Copyright © 2017 KLANTEAM5. All rights reserved.
 //
 
+import MapKit
 import UIKit
 
-class AskTableViewController: UITableViewController {
-
+class AskTableViewController: UIViewController, CLLocationManagerDelegate {
+    
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
+    
+    @IBOutlet weak var map: MKMapView!
+    
+    
+    let newPin = MKPointAnnotation()
+    let locationManager = CLLocationManager()
+    
     
     var name : String? = nil
     var phone : String? = nil
@@ -21,76 +29,52 @@ class AskTableViewController: UITableViewController {
         super.viewDidLoad()
         phoneLabel.text = phone
         nameLabel.text = name
+        
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
+        self.map.showsUserLocation = true
+        
+//        var longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "handleLongPress:")
+//        
+//        longPressRecognizer.minimumPressDuration = 1.0
+//        self.map.addGestureRecognizer(longPressRecognizer)
+        //        self.map.zoomToUserLocation()
     }
-
+    
+    func handleLongPress(gestureRecognizer : UIGestureRecognizer){
+        print("aaa")
+        if gestureRecognizer.state != .began { return }
+        
+        let touchPoint = gestureRecognizer.location(in: self.map)
+        let touchMapCoordinate = self.map.convert(touchPoint, toCoordinateFrom: self.map)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = touchMapCoordinate
+        
+        self.map.addAnnotation(annotation)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        map.removeAnnotation(newPin)
+        
+        let location = locations.last! as CLLocation
+        
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        //set region on the map
+        map.setRegion(region, animated: true)
+        
+        newPin.coordinate = location.coordinate
+        map.addAnnotation(newPin)
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 3
-    }
-
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-//
-//        // Configure the cell...
-//
-//        return cell
-//    }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
 }
