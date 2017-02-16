@@ -69,6 +69,21 @@ extension Parcel {
     }
 }
 
+public struct Coordinates {
+    public let long: Float
+    public let lat: Float
+}
+
+extension Coordinates {
+    init?(json: [String:Any]) {
+        let long = json["long"] as! Float
+        let lat = json["lat"] as! Float
+        
+        self.long = long
+        self.lat = lat
+    }
+}
+
 open class PostmanApi {
     
     func getParcels(completionHandler:@escaping (Error?, [Parcel]?, URLResponse?) -> ()) {
@@ -128,6 +143,39 @@ open class PostmanApi {
             
             }.resume()
         
+    }
+    
+    func getLocations(completionHandler:@escaping (Error?, [Location]?, URLResponse?) -> ()) {
+        let request = URLRequest(url: URL(string: "http://localhost:8000/locations.json")!)
+        let session = URLSession.shared
+        
+        session.dataTask(with: request) {data, response, err in
+            
+            if let err = err {
+                completionHandler(err, nil, nil)
+                return
+            }
+            
+            do {
+                
+                let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as! [[String: Any]]
+                var locations: [Location] = []
+                
+                for locationJson in parsedData {
+                    let p: Location = self.createLocationFromJson(locationJson)!
+                    locations.append(p)
+                }
+                
+                completionHandler(nil, locations, response)
+                
+            } catch let error as NSError {
+                print(error)
+            }
+            }.resume()
+    }
+    
+    func createLocationFromJson(_ locationJson: [String: Any]) -> Location? {
+        return Location(json: locationJson)
     }
     
     
