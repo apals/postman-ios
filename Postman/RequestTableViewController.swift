@@ -1,5 +1,5 @@
 //
-//  ParcelDetailTableViewController.swift
+//  RequestTableViewController.swift
 //  Postman
 //
 //  Created by Axel Riese on 2017-02-16.
@@ -8,30 +8,10 @@
 
 import UIKit
 
-class ParcelDetailTableViewController: UITableViewController {
-    
-    var parcel: Parcel? = nil
-    
-    
-    @IBOutlet weak var idLabel: UILabel!
-    @IBOutlet weak var senderLabel: UILabel!
-    @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var courierLabel: UILabel!
-    
-    
+class RequestTableViewController: UITableViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        idLabel.text = "id: " + String(parcel!.id)
-        senderLabel.text = "sender: "  + parcel!.sender
-        statusLabel.text = "status: " + parcel!.status.message
-        courierLabel.text = "courier: "
-        
-        if (parcel!.status.courier != nil) {
-            courierLabel.text! += parcel!.status.courier!.name
-        } else {
-            courierLabel.text! += "None"
-        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -54,7 +34,7 @@ class ParcelDetailTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return 2
     }
 
     /*

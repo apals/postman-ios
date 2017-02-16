@@ -26,7 +26,7 @@ class Location: NSObject, MKAnnotation {
         self.coordinate = CLLocationCoordinate2D(
             latitude: CLLocationDegrees(Float(json["longitude"] as! String)!),
             longitude: CLLocationDegrees(Float(json["latitude"] as! String)!))
-                
+        
         self.distance = distance
         
         super.init()
