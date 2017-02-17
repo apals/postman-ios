@@ -70,6 +70,7 @@ class ContactsUiViewController: UIViewController {
             let selectedContact = contacts[indexPath.row]
             askTableViewController.name = selectedContact.givenName + " " + selectedContact.familyName
             askTableViewController.phone = (selectedContact.phoneNumbers[0].value ).value(forKey: "digits") as? String
+            askTableViewController.parcel = parcel
         }
     }
 

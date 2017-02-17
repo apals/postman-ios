@@ -10,12 +10,19 @@ import UIKit
 
 class RequestDetailTableViewController: UITableViewController {
     
+    var shouldShowButton: Bool = true
+    var acceptable: Bool = false
+    
+    
     var request: Request?
+    @IBOutlet weak var acceptButton: UIButton!
 
     @IBOutlet weak var weightAndSizeLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var servicePointLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +32,14 @@ class RequestDetailTableViewController: UITableViewController {
             addressLabel.text = request.address
             servicePointLabel.text = request.servicePoint
             
+            if !shouldShowButton {
+                button.isHidden = true
+            }
+            
+            if acceptable {
+                acceptButton.isHidden = false
+                
+            }
         }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -32,8 +47,17 @@ class RequestDetailTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    @IBAction func pickupClicked(_ sender: Any) {
+    
+    @IBAction func acceptFriendPickupRequest(_ sender: Any) {
+        
+        postmanApi.updateRequest(requestId: (request?.id)!, accepted: true)
     }
+    @IBAction func pickupClicked(_ sender: Any) {
+        postmanApi.updateRequest(requestId: (request?.id)!, accepted: true)
+    }
+    
+    
+    @IBOutlet weak var button: UIButton!
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

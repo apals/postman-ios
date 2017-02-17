@@ -91,6 +91,10 @@ class RequestTableViewController: UITableViewController {
         if let contactController = segue.destination as? ContactsUiViewController {
             contactController.parcel = parcel
         }
+        
+        if let controller = segue.destination as? RequestDeliveryTableViewController {
+            controller.parcel = parcel
+        }
         // Pass the selected object to the new view controller.
     }
 

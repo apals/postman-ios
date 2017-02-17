@@ -17,6 +17,8 @@ class AskTableViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var map: MKMapView!
     
+    var parcel: Parcel?
+    
     
     let newPin = MKPointAnnotation()
     let locationManager = CLLocationManager()
@@ -57,7 +59,7 @@ class AskTableViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func buttonClicked(_ sender: Any) {
         print("CLICKED")
-        postmanApi.postRequest()
+        postmanApi.postRequest(parcelId: (parcel?.id)!, ownerId: 1, price: 0)
     }
     
     

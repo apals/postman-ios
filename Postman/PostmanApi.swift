@@ -36,7 +36,7 @@ extension Status {
         let pickedUp = json["picked_up"] as! Bool
         let delivered = json["delivered"] as! Bool
         let courierJson = json["courier"]
-        if courierJson is NSNull  {
+        if courierJson is NSNull || courierJson == nil {
             self.courier = nil
         } else {
             self.courier = Courier(json: courierJson as! [String:Any])
@@ -52,6 +52,7 @@ public struct Parcel {
     public let id: Int
     public let status: Status
     public let sender: String
+    public let servicePoint: String
     //public let location: String
 }
 
@@ -61,6 +62,7 @@ extension Parcel {
         let status = Status(json: json["status"] as! [String:Any])
         let sender = json["sender"] as! String
         //        let location = json["location"] as! String
+        self.servicePoint = json["service_point"] as! String
         
         self.id = id
         self.status = status!
@@ -177,19 +179,24 @@ open class PostmanApi {
     func createLocationFromJson(_ locationJson: [String: Any]) -> Location? {
         return Location(json: locationJson)
     }
+
     
-    func postRequest() {
+    
+    let addresses = ["Alpvägen 23", "Ringgatan 11b", "Skolgatan 99", "Skogalund 15", "Rissnegatan 37"]
+    var i = 0
+    
+    func postRequest(parcelId: Int, ownerId: Int, price: Int) {
         var request = URLRequest(url: URL(string: "http://postman.quemar.mx/requests?email=a@a.se&password=a")!)
         request.httpMethod = "POST"
-        var a = [String:Any]()
-        a["parcel_id"] = 1
-        a["owner_id"] = 1
-        a["price"] = 0
-        a["address"] = "aa"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let dict = ["request": ["parcel_id": parcelId, "owner_id": ownerId, "price": price, "address": addresses[i % addresses.count]]] as [String: Any]
+
+        
         
         do {
             
-            let jsonData = try JSONSerialization.data(withJSONObject: a, options: .prettyPrinted)
+            let jsonData = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
             request.httpBody = jsonData
             
         } catch {
@@ -203,6 +210,39 @@ open class PostmanApi {
             print(err)
             }.resume()
     }
+    
+    func updateRequest(requestId: Int, accepted: Bool) {
+        
+        var request = URLRequest(url: URL(string: "http://postman.quemar.mx/requests/\(requestId)?email=a@a.se&password=a")!)
+        request.httpMethod = "PATCH"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        
+        let dict = ["_method": "PATCH", "request": ["id": requestId, "accepted": accepted]] as [String: Any]
+        
+        
+        do {
+            
+            let jsonData = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
+            request.httpBody = jsonData
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        
+        URLSession.shared.dataTask(with: request) {data, response, err in
+            print(data)
+            print(response)
+            print(err)
+            }.resume()
+    }
+    
+    
+    
+    
+    
+    
     
     func getRequestsAtServicePoint(id: Int, completionHandler:@escaping (Error?, [Request]?, URLResponse?) -> ()) {
         let request = URLRequest(url: URL(string: "http://postman.quemar.mx/requests?email=a@a.se&password=a&service_point_id=\(id)")!)
@@ -233,9 +273,44 @@ open class PostmanApi {
             }.resume()
     }
     
+    
+    
+    
+    
+    func getRequests(completionHandler:@escaping (Error?, [Request]?, URLResponse?) -> ()) {
+        let request = URLRequest(url: URL(string: "http://postman.quemar.mx/requests?email=a@a.se&password=a")!)
+        let session = URLSession.shared
+        
+        session.dataTask(with: request) {data, response, err in
+            
+            if let err = err {
+                completionHandler(err, nil, nil)
+                return
+            }
+            
+            do {
+                
+                let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as! [[String: Any]]
+                var requests: [Request] = []
+                
+                for requestJson in parsedData {
+                    let r: Request = Request(json: requestJson)!
+                    requests.append(r)
+                }
+                
+                completionHandler(nil, requests, response)
+                
+            } catch let error as NSError {
+                print(error)
+            }
+            }.resume()
+    }
+
+    
 }
 
 public struct Request {
+    public let id: Int
     public let servicePoint: String
     public let parcelWeight: Int
     public let parcelSize: String
@@ -244,7 +319,7 @@ public struct Request {
     public let accepted: Bool
     
     init?(json: [String:Any]) {
-        
+        self.id = json["id"] as! Int
         self.servicePoint = json["service_point"] as! String
         self.parcelWeight = json["parcel_weight"] as! Int
         self.parcelSize = json["parcel_size"] as! String

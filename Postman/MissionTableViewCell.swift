@@ -1,18 +1,16 @@
 //
-//  ParcelTableViewCell.swift
+//  MissionTableViewCell.swift
 //  Postman
 //
-//  Created by Andreas Pålsson on 2017-02-16.
+//  Created by Andreas Pålsson on 2017-02-17.
 //  Copyright © 2017 KLANTEAM5. All rights reserved.
 //
 
 import UIKit
 
-class ParcelTableViewCell: UITableViewCell {
+class MissionTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var senderLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
-    
+    @IBOutlet weak var missionTitleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

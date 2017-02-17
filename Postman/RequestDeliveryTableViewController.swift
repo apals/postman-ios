@@ -10,6 +10,9 @@ import UIKit
 
 class RequestDeliveryTableViewController: UITableViewController {
 
+    
+    var parcel: Parcel?
+    
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var slider: UISlider!
     override func viewDidLoad() {
@@ -29,7 +32,7 @@ class RequestDeliveryTableViewController: UITableViewController {
 
     @IBAction func onButtonClicked(_ sender: Any) {
         print("CLICKED")
-        postmanApi.postRequest()
+        postmanApi.postRequest(parcelId: parcel!.id, ownerId: 1, price: Int(slider.value))
     }
     // MARK: - Table view data source
 
