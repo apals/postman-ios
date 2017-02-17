@@ -88,8 +88,11 @@ extension Coordinates {
 
 open class PostmanApi {
     
+    var user: String?
+    var password: String?
+    
     func getParcels(completionHandler:@escaping (Error?, [Parcel]?, URLResponse?) -> ()) {
-        let request = URLRequest(url: URL(string: "http://postman.quemar.mx/parcels?email=a@a.se&password=a")!)
+        let request = URLRequest(url: URL(string: "http://postman.quemar.mx/parcels?email=\(user!)&password=\(password!)")!)
         let session = URLSession.shared
         
         session.dataTask(with: request) {data, response, err in
@@ -147,8 +150,12 @@ open class PostmanApi {
     }
     
     func getLocations(_ lat: Double, _ long: Double, completionHandler:@escaping (Error?, [Location]?, URLResponse?) -> ()) {
-//        let request = URLRequest(url: URL(string: "http://postman.quemar.mx/service_points?email=a@a.se&password=a&longitude=\(long)&latitude=\(lat)")!)
-        let request = URLRequest(url: URL(string: "http://postman.quemar.mx/service_points?email=a@a.se&password=a&longitude=59.332484&latitude=18.061296")!)
+//        let request = URLRequest(url: URL(string: "http://postman.quemar.mx/service_points?email=\(user)&password=\(password)&longitude=\(long)&latitude=\(lat)")!)
+        
+        
+        print(user)
+        print(password)
+        let request = URLRequest(url: URL(string: "http://postman.quemar.mx/service_points?email=\(user!)&password=\(password!)&longitude=59.332484&latitude=18.061296")!)
         let session = URLSession.shared
         
         session.dataTask(with: request) {data, response, err in
@@ -186,7 +193,7 @@ open class PostmanApi {
     var i = 0
     
     func postRequest(parcelId: Int, ownerId: Int, price: Int) {
-        var request = URLRequest(url: URL(string: "http://postman.quemar.mx/requests?email=a@a.se&password=a")!)
+        var request = URLRequest(url: URL(string: "http://postman.quemar.mx/requests?email=\(user!)&password=\(password!)")!)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
@@ -213,7 +220,7 @@ open class PostmanApi {
     
     func updateRequest(requestId: Int, accepted: Bool) {
         
-        var request = URLRequest(url: URL(string: "http://postman.quemar.mx/requests/\(requestId)?email=a@a.se&password=a")!)
+        var request = URLRequest(url: URL(string: "http://postman.quemar.mx/requests/\(requestId)?email=\(user!)&password=\(password!)")!)
         request.httpMethod = "PATCH"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
@@ -245,7 +252,7 @@ open class PostmanApi {
     
     
     func getRequestsAtServicePoint(id: Int, completionHandler:@escaping (Error?, [Request]?, URLResponse?) -> ()) {
-        let request = URLRequest(url: URL(string: "http://postman.quemar.mx/requests?email=a@a.se&password=a&service_point_id=\(id)")!)
+        let request = URLRequest(url: URL(string: "http://postman.quemar.mx/requests?email=\(user!)&password=\(password!)&service_point_id=\(id)")!)
         let session = URLSession.shared
         
         session.dataTask(with: request) {data, response, err in
@@ -278,7 +285,7 @@ open class PostmanApi {
     
     
     func getRequests(completionHandler:@escaping (Error?, [Request]?, URLResponse?) -> ()) {
-        let request = URLRequest(url: URL(string: "http://postman.quemar.mx/requests?email=a@a.se&password=a")!)
+        let request = URLRequest(url: URL(string: "http://postman.quemar.mx/requests?email=\(user!)&password=\(password!)")!)
         let session = URLSession.shared
         
         session.dataTask(with: request) {data, response, err in

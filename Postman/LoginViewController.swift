@@ -34,6 +34,8 @@ class LoginViewController: UIViewController {
     }
     
     func success(success: Bool) -> Void {
+        postmanApi.user = usernameTextField.text
+        postmanApi.password = passwordTextField.text
         OperationQueue.main.addOperation {
             self.spinner.stopAnimating()
             
