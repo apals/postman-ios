@@ -483,7 +483,9 @@
                             <outlet property="delegate" destination="v8x-po-YQ1" id="D5U-ny-hOR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Parcels" id="o5w-20-qLl"/>
+                    <navigationItem key="navigationItem" title="My Parcels" id="o5w-20-qLl">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="mOt-vP-L2z"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lzN-MJ-Hwf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

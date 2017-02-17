@@ -13,13 +13,38 @@ class FirstViewController: UITableViewController {
     var parcels: [Parcel] = []
     var requests: [Request] = []
     
+    
+    
+    var refresherControl = UIRefreshControl()
+
+    
+    func handleRefresh(_ sender: AnyObject) {
+        // Do some reloading of data and update the table view's data source
+        // Fetch more objects from a web service, for example...
+        
+        parcels = []
+        requests = []
+        postmanApi.getParcels(completionHandler: success)
+        postmanApi.getRequests(completionHandler: successRequests)
+        
+        self.tableView.reloadData()
+        self.refresherControl.endRefreshing()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         postmanApi.getParcels(completionHandler: success)
         postmanApi.getRequests(completionHandler: successRequests)
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        self.refresherControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refresherControl.addTarget(self, action: "handleRefresh:", for: UIControlEvents.valueChanged)
+        self.tableView?.addSubview(refresherControl)
+        
+
     }
-    
     func reload() {
         OperationQueue.main.addOperation {
             self.tableView.reloadData()
