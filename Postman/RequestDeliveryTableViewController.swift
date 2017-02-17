@@ -30,9 +30,24 @@ class RequestDeliveryTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func delay() {
+        
+        for controller in (self.navigationController?.viewControllers)! {
+            if controller is FirstViewController {
+                self.navigationController?.popToViewController(controller, animated: true)
+            }
+        }
+    }
+    
     @IBAction func onButtonClicked(_ sender: Any) {
         print("CLICKED")
         postmanApi.postRequest(parcelId: parcel!.id, ownerId: 1, price: Int(slider.value))
+        
+        let when = DispatchTime.now() + 1// change 2 to desired number of seconds
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            self.delay()
+        }
+        
     }
     // MARK: - Table view data source
 

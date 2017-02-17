@@ -48,12 +48,21 @@ class RequestDetailTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    
+    func pop() {
+        let when = DispatchTime.now() + 1// change 2 to desired number of seconds
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
     @IBAction func acceptFriendPickupRequest(_ sender: Any) {
-        
         postmanApi.updateRequest(requestId: (request?.id)!, accepted: true)
+        pop()
     }
     @IBAction func pickupClicked(_ sender: Any) {
         postmanApi.updateRequest(requestId: (request?.id)!, accepted: true)
+        pop()
     }
     
     

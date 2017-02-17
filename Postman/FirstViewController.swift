@@ -21,21 +21,23 @@ class FirstViewController: UITableViewController {
     func handleRefresh(_ sender: AnyObject) {
         // Do some reloading of data and update the table view's data source
         // Fetch more objects from a web service, for example...
-        
-        parcels = []
-        requests = []
-        postmanApi.getParcels(completionHandler: success)
-        postmanApi.getRequests(completionHandler: successRequests)
+        getTheThings()
         
         self.tableView.reloadData()
         self.refresherControl.endRefreshing()
     }
     
+    func getTheThings() {
+        
+        parcels = []
+        requests = []
+        postmanApi.getParcels(completionHandler: success)
+        postmanApi.getRequests(completionHandler: successRequests)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        postmanApi.getParcels(completionHandler: success)
-        postmanApi.getRequests(completionHandler: successRequests)
         // Do any additional setup after loading the view, typically from a nib.
         
         
@@ -45,6 +47,11 @@ class FirstViewController: UITableViewController {
         
 
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        getTheThings()
+    }
+    
     func reload() {
         OperationQueue.main.addOperation {
             self.tableView.reloadData()

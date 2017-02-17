@@ -57,9 +57,24 @@ class AskTableViewController: UIViewController, CLLocationManagerDelegate {
         self.map.addAnnotation(annotation)
     }
     
+    func delay() {
+        
+        for controller in (self.navigationController?.viewControllers)! {
+            if controller is FirstViewController {
+                self.navigationController?.popToViewController(controller, animated: true)
+            }
+        }
+    }
+    
     @IBAction func buttonClicked(_ sender: Any) {
         print("CLICKED")
         postmanApi.postRequest(parcelId: (parcel?.id)!, ownerId: 1, price: 0)
+        
+        let when = DispatchTime.now() + 1// change 2 to desired number of seconds
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            self.delay()
+        }
+        
     }
     
     

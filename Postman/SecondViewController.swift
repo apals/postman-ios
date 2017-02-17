@@ -20,7 +20,8 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         super.viewDidLoad()
         postOfficesMapView.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
-        let initialLocation = CLLocation(latitude: 59.3501, longitude: 18.0094)
+//        59.332484","latitude":"18.061296
+        let initialLocation = CLLocation(latitude: 59.332484, longitude: 18.061296)
         centerMapOnLocation(location: initialLocation)
         
         
