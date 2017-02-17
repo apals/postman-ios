@@ -31,17 +31,17 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         self.locationManager.delegate = self
         self.postOfficesMapView.showsUserLocation = true
         
-        
+        postmanApi.getLocations(10, 10, completionHandler: success)
         
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         print("updated")
-        let location = locations.last as! CLLocation
+//        let location = locations.last as! CLLocation
+//        
+//        var latitude = Double((locationManager.location?.coordinate.latitude)!)
+//        var longitude = Double((locationManager.location?.coordinate.longitude)!)
         
-        var latitude = Double((locationManager.location?.coordinate.latitude)!)
-        var longitude = Double((locationManager.location?.coordinate.longitude)!)
-        postmanApi.getLocations(latitude, longitude, completionHandler: success)
     }
     
     func success(err: Error?, locations: [Location]?, response: URLResponse?) -> Void {

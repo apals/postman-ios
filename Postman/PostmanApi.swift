@@ -145,7 +145,8 @@ open class PostmanApi {
     }
     
     func getLocations(_ lat: Double, _ long: Double, completionHandler:@escaping (Error?, [Location]?, URLResponse?) -> ()) {
-        let request = URLRequest(url: URL(string: "http://postman.quemar.mx/service_points?email=a@a.se&password=a&longitude=\(long)&latitude=\(lat)")!)
+//        let request = URLRequest(url: URL(string: "http://postman.quemar.mx/service_points?email=a@a.se&password=a&longitude=\(long)&latitude=\(lat)")!)
+        let request = URLRequest(url: URL(string: "http://postman.quemar.mx/service_points?email=a@a.se&password=a&longitude=59.332484&latitude=18.061296")!)
         let session = URLSession.shared
         
         session.dataTask(with: request) {data, response, err in
