@@ -52,7 +52,7 @@ class RequestDeliveryTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     @IBAction func valueChanged(_ sender: Any) {
-        priceLabel.text = "Price: " + String(slider.value) + " kr"
+        priceLabel.text = "Price: " + String(Int(slider.value)) + " kr"
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
