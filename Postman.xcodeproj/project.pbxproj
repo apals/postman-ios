@@ -11,6 +11,8 @@
 		451D7C3F1E564A9500F212FC /* ServicePointPackagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451D7C3E1E564A9500F212FC /* ServicePointPackagesTableViewController.swift */; };
 		451D7C411E564ADE00F212FC /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451D7C401E564ADE00F212FC /* RequestTableViewCell.swift */; };
 		451D7C431E564DE400F212FC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451D7C421E564DE400F212FC /* LoginViewController.swift */; };
+		451D7C491E56789300F212FC /* RequestDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451D7C481E56789300F212FC /* RequestDetailTableViewController.swift */; };
+		451D7C4B1E567BF700F212FC /* RequestDeliveryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451D7C4A1E567BF700F212FC /* RequestDeliveryTableViewController.swift */; };
 		458F8E061E55C776006C95E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458F8E051E55C776006C95E7 /* AppDelegate.swift */; };
 		458F8E081E55C776006C95E7 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458F8E071E55C776006C95E7 /* FirstViewController.swift */; };
 		458F8E0A1E55C776006C95E7 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458F8E091E55C776006C95E7 /* SecondViewController.swift */; };
@@ -49,6 +51,8 @@
 		451D7C3E1E564A9500F212FC /* ServicePointPackagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicePointPackagesTableViewController.swift; sourceTree = "<group>"; };
 		451D7C401E564ADE00F212FC /* RequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
 		451D7C421E564DE400F212FC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		451D7C481E56789300F212FC /* RequestDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDetailTableViewController.swift; sourceTree = "<group>"; };
+		451D7C4A1E567BF700F212FC /* RequestDeliveryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDeliveryTableViewController.swift; sourceTree = "<group>"; };
 		458F8E021E55C776006C95E7 /* Postman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Postman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		458F8E051E55C776006C95E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		458F8E071E55C776006C95E7 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +123,7 @@
 		458F8E041E55C776006C95E7 /* Postman */ = {
 			isa = PBXGroup;
 			children = (
+				451D7C481E56789300F212FC /* RequestDetailTableViewController.swift */,
 				765FCA5B1E5654DB00E30811 /* AskTableViewController.swift */,
 				458F8E051E55C776006C95E7 /* AppDelegate.swift */,
 				458F8E071E55C776006C95E7 /* FirstViewController.swift */,
@@ -136,6 +141,7 @@
 				451D7C3E1E564A9500F212FC /* ServicePointPackagesTableViewController.swift */,
 				451D7C401E564ADE00F212FC /* RequestTableViewCell.swift */,
 				451D7C421E564DE400F212FC /* LoginViewController.swift */,
+				451D7C4A1E567BF700F212FC /* RequestDeliveryTableViewController.swift */,
 			);
 			path = Postman;
 			sourceTree = "<group>";
@@ -298,12 +304,14 @@
 				765FCA541E5601D200E30811 /* ParcelDetailTableViewController.swift in Sources */,
 				458F8E061E55C776006C95E7 /* AppDelegate.swift in Sources */,
 				765FCA561E5636CF00E30811 /* ContactsUiViewController.swift in Sources */,
+				451D7C491E56789300F212FC /* RequestDetailTableViewController.swift in Sources */,
 				451D7C3D1E564A4B00F212FC /* Location.swift in Sources */,
 				451D7C411E564ADE00F212FC /* RequestTableViewCell.swift in Sources */,
 				458F8E381E55FAF8006C95E7 /* ParcelTableViewCell.swift in Sources */,
 				458F8E081E55C776006C95E7 /* FirstViewController.swift in Sources */,
 				451D7C3F1E564A9500F212FC /* ServicePointPackagesTableViewController.swift in Sources */,
 				765FCA581E5638AB00E30811 /* RequestTableViewController.swift in Sources */,
+				451D7C4B1E567BF700F212FC /* RequestDeliveryTableViewController.swift in Sources */,
 				458F8E361E55CFAA006C95E7 /* PostmanApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

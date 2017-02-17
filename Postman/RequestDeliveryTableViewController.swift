@@ -1,38 +1,25 @@
 //
-//  RequestDetailTableViewController.swift
+//  RequestDeliveryTableViewController.swift
 //  Postman
 //
-//  Created by Andreas Pålsson on 2017-02-16.
+//  Created by Andreas Pålsson on 2017-02-17.
 //  Copyright © 2017 KLANTEAM5. All rights reserved.
 //
 
 import UIKit
 
-class RequestDetailTableViewController: UITableViewController {
-    
-    var request: Request?
+class RequestDeliveryTableViewController: UITableViewController {
 
-    @IBOutlet weak var weightAndSizeLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var servicePointLabel: UILabel!
+    @IBOutlet weak var slider: UISlider!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let request = request {
-            weightAndSizeLabel.text = String(request.parcelWeight) + "g, " + request.parcelSize
-            priceLabel.text = String(request.price) + " kr"
-            addressLabel.text = request.address
-            servicePointLabel.text = request.servicePoint
-            
-        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-    @IBAction func pickupClicked(_ sender: Any) {
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,8 +27,15 @@ class RequestDetailTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func onButtonClicked(_ sender: Any) {
+        print("CLICKED")
+        postmanApi.postRequest()
+    }
     // MARK: - Table view data source
 
+    @IBAction func valueChanged(_ sender: Any) {
+        priceLabel.text = "Price: " + String(slider.value) + " kr"
+    }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -49,7 +43,7 @@ class RequestDetailTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 6
+        return 3
     }
 
     /*

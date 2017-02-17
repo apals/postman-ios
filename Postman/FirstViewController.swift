@@ -14,8 +14,6 @@ class FirstViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.contentInset = UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0)
-        
         postmanApi.getParcels(completionHandler: success)
         // Do any additional setup after loading the view, typically from a nib.
     }

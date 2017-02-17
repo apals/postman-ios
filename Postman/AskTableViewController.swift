@@ -55,6 +55,12 @@ class AskTableViewController: UIViewController, CLLocationManagerDelegate {
         self.map.addAnnotation(annotation)
     }
     
+    @IBAction func buttonClicked(_ sender: Any) {
+        print("CLICKED")
+        postmanApi.postRequest()
+    }
+    
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         map.removeAnnotation(newPin)
         

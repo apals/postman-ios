@@ -22,10 +22,9 @@ class ParcelDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        idLabel.text = "id: " + String(parcel!.id)
-        senderLabel.text = "sender: "  + parcel!.sender
-        statusLabel.text = "status: " + parcel!.status.message
-        courierLabel.text = "courier: "
+        idLabel.text = String(parcel!.id)
+        senderLabel.text = parcel!.sender
+        statusLabel.text = parcel!.status.message
         
         if (parcel!.status.courier != nil) {
             courierLabel.text! += parcel!.status.courier!.name
@@ -54,7 +53,7 @@ class ParcelDetailTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return 6
     }
 
     /*

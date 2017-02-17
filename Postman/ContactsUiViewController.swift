@@ -34,6 +34,7 @@ class ContactsUiViewController: UIViewController {
                         let predicate: NSPredicate = CNContact.predicateForContacts(matchingName: name)
                         let keysToFetch = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactBirthdayKey, CNContactViewController.descriptorForRequiredKeys()] as [Any]
                         self.contacts = try self.store.unifiedContacts(matching: predicate, keysToFetch:keysToFetch as! [CNKeyDescriptor])
+                        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
                         self.tableView.reloadData()
                     }
                     catch {

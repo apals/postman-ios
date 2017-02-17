@@ -9,10 +9,13 @@
 import UIKit
 import MapKit
 
-class SecondViewController: UIViewController, MKMapViewDelegate {
+class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     var annotations = [MKPointAnnotation]()
 
+    let locationManager = CLLocationManager()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         postOfficesMapView.delegate = self
@@ -20,7 +23,25 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
         let initialLocation = CLLocation(latitude: 59.3501, longitude: 18.0094)
         centerMapOnLocation(location: initialLocation)
         
-        postmanApi.getLocations(completionHandler: success)
+        
+        
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
+        self.locationManager.delegate = self
+        self.postOfficesMapView.showsUserLocation = true
+        
+        
+        
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        print("updated")
+        let location = locations.last as! CLLocation
+        
+        var latitude = Double((locationManager.location?.coordinate.latitude)!)
+        var longitude = Double((locationManager.location?.coordinate.longitude)!)
+        postmanApi.getLocations(latitude, longitude, completionHandler: success)
     }
     
     func success(err: Error?, locations: [Location]?, response: URLResponse?) -> Void {

@@ -55,7 +55,8 @@ class ServicePointPackagesTableViewController: UITableViewController {
         let request = requests[indexPath.row]
         
         cell.requestLabel.text = request.servicePoint
-        
+        cell.distanceLabel.text = request.address
+        cell.priceLabel.text = String(request.price) + " kr"
         
         return cell
     }
@@ -115,5 +116,17 @@ class ServicePointPackagesTableViewController: UITableViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let requestDetailViewController = segue.destination as! RequestDetailTableViewController
+        
+        // Get the cell that generated this segue.
+        if let selectedRequestCell = sender as? RequestTableViewCell {
+            let indexPath = tableView.indexPath(for: selectedRequestCell)!
+            let selectedParsel = requests[indexPath.row]
+            requestDetailViewController.request = selectedParsel
+        }
+    }
     
 }

@@ -12,6 +12,8 @@ class RequestTableViewCell: UITableViewCell {
     
     @IBOutlet weak var requestLabel: UILabel!
     
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
